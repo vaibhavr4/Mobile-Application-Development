@@ -1,0 +1,130 @@
+PostMessageActivity
+
+// create db root reference
+// create reference for child
+final DatabaseReference dbchildRef = rootRef.child("UserMessages");
+
+//on post message click
+//get edit text values(title and body)
+
+//create object for MessageContent model class and pass title and body params
+
+//pass this object to database
+dbchildRef.push().setValue(messageContent)
+
+--------------------------------------------
+Package -> utils 
+MessageContent(Model class)
+
+public class MessageContent
+{
+	private String messageTitle;
+	private String messageBody;
+	
+	//getters and setters
+	//parameterized constructor
+	// no argument constructor (for firebase)
+}
+
+---------------------------------------------
+ViewMessageActivity
+
+myMessageListView = findViewById(R.id.myMessageListView);
+
+dbRootRef = getInstance().gerReference();
+
+final DatabaseReference childRef = dbRootRef.child("UserMessages");
+
+customAdapeter = new CustomMessageAdapter(getContext(),childRef);
+
+myMessageListView.setAdapter(customAdapeter);
+
+---------------------------------------------
+CustomMessageAdapter class
+
+// extend BaseAdapter(implement methods)
+
+//Declare properties we will be getting from calling activity
+private Context context;
+private DatabaseReference dbchildRef; //child ref from calling activity
+private ArrayList<DataSnapshot> dataSnapshotResultsFromDb;
+
+// constructor
+public CustomMessageAdapter(Context context,DatabaseReference dbchildRef)
+{
+this.context = context;
+this.dbchildRef = dbchildRef;
+
+//set child listener
+dbchildRef.addChildEventListener(dbChildListener);
+
+//init ArrayList to hold db results
+
+dataSnapshotResultsFromDb = new ArrayList();
+}
+
+//set event listener on child
+ChildListener dbChildListener = new ChildEventListener()
+{
+	public void onChildAdded(DataSnapshot dataSnapShot,String s)
+	{
+		dataSnapshotResultsFromDb.add(dataSnapShot);
+		//update adapter view
+		notifyDataSetChanged();
+	}
+}
+
+public int getCount()
+{
+	return dataSnapshotResultsFromDb.size();
+}
+
+public MessageContent getItem(int position)
+{
+	//take each item from data snapshot and convert it to MessageContext based on position
+	DataSnapshot dataSnapshotItemFromList = dataSnapshotResultsFromDb.get(position);
+	
+	//in ghost mood (int.class) typecasting datasnapshot to model class object	
+	return dataSnapshotItemFromList.getValue(MessageContent.class);    
+	
+}
+
+public View getView(int position,View convertView,ViewGroup parent)
+{
+	ViewHolder viewHolder;
+	//inflate view for adapter item
+	if(convertView==null)
+	{
+		convertView = View.inflate(context,R.layout.MessageListItem,null); 		//MessageListItem - custom view having Title and Body
+		viewHolder = new ViewHolder();
+		viewHolder.messageTitle = convertView.findViewById(R.Id.messageTitleAdapterItem);
+		viewHolder.messageBody = convertView.findViewById(R.Id.messageBodyAdapterItem);
+		
+		viewHolder.setTag(viewHolder);
+	}
+	else
+	{
+		viewHolder = (ViewHolder)convertView.getTag();
+	}
+	
+	//Get data from db and set text views -> title and body
+	MessageContent messageDetails = getItem(position);
+	
+	//set text for title and body
+	viewHolder.messageTitle.setText(messageDetails.getTitle());
+	viewHolder.messageBody.setText(messageDetails.getBody());
+	
+	return convertView;
+	
+}
+
+private static class ViewHolder
+{
+	TextView messageTitle;
+	TextView messageBody;
+}
+
+
+
+
+

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assignment1</string>
+    <string name="title_name">Mobile Application Development</string>
+    <string name="student_name">Enter name</string>
+    <string name="student_id">Enter Student ID</string>
+    <string name="level1">Undergraduate</string>
+    <string name="level2">Graduate</string>
+    <string name="enroll">ENROLL</string>
+    <string name="degree_name">Degree program</string>
+</resources>

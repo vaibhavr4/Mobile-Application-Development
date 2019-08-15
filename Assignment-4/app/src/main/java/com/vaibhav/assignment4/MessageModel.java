@@ -1,0 +1,30 @@
+package com.vaibhav.assignment4;
+
+public class MessageModel {
+
+    private String sender;
+    private String messageText;
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public MessageModel(String sender, String messageText) {
+        this.sender = sender;
+        this.messageText = messageText;
+    }
+
+    public MessageModel(){}
+}

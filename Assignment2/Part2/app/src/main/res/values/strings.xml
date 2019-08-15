@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+    <string name="car_type">Select car type</string>
+    <string name="sedan">Sedan</string>
+    <string name="suv">SUV</string>
+    <string name="hatchback">Hatchback</string>
+    <string name="view">View Car</string>
+    <string name="hatchback_desc">The Mini Cooper is a great vehicle for people seeking athletic
+        handling and brisk acceleration from a subcompact car. Its excellent road grip,
+        firm suspension, sturdy brakes, and responsive steering help this vehicle move with an air
+        of zippiness usually reserved for larger hatchbacks. The cabin is loaded with premium
+        materials, and it has a stellar predicted reliability rating
+    </string>
+
+    <string name="suv_desc">
+        The 2019 Honda CR-V has few weaknesses, which is why it ranks near the top of the compact
+        SUV class. It boasts a comfortable ride, peppy engine choices, great safety scores, and a
+        high-grade cabin with loads of passenger and cargo space.
+    </string>
+
+    <string name="sedan_desc">
+        The 2019 Toyota Camry Hybrid is a top choice in the midsize car class.
+        It has a lively powertrain, solid predicted reliability, a large trunk, and loads of
+        standard features, including the welcome addition of Apple CarPlay.
+    </string>
+    <string name="view_web">View Car Website</string>
+
+    <string name="sedan_url">https://cars.usnews.com/cars-trucks/toyota/camry-hybrid</string>
+    <string name="suv_url">https://cars.usnews.com/cars-trucks/honda/cr-v</string>
+    <string name="hatchback_url">https://cars.usnews.com/cars-trucks/mini/cooper</string>
+</resources>
